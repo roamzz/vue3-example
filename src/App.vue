@@ -1,10 +1,36 @@
+
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+    <SalutationName
+      v-model:salutation="form.salutation"
+      v-model:name="form.name"
+    />
+    <pre>{{ form }}</pre>
   </div>
-  <router-view />
 </template>
+
+<script>
+import { reactive } from 'vue'
+import SalutationName from './components/SalutationName'
+
+export default {
+  name: 'App',
+  components: {
+    SalutationName
+  },
+  setup () {
+    const form = reactive({
+      salutation: '',
+      name: ''
+    })
+
+    return {
+      form
+    }
+  }
+}
+</script>
+
 
 <style>
 #app {
